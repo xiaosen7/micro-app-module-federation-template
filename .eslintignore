@@ -1,0 +1,5 @@
+dist
+assets
+public
+node_modules
+.eslintrc.cjs
