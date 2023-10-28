@@ -1,0 +1,17 @@
+digraph {
+    rankdir=LR
+    edge[minlen=2]
+    
+    
+    Start -> Rendering[label="Render"]
+    Rendering -> Rendered[label="RenderSuccessfully"]
+    Rendered -> Start[label="auto"]
+
+    Rendering -> RenderingError[label="Error"]
+    RenderingError -> Start[label="auto"]
+
+    Rendering -> FetchingError[label="FetchError"]
+    FetchingError -> StartingServer[label="StartServer"]
+    StartingServer -> StartedServer[label="SuccessfullyStartedServer"]
+    StartedServer -> Rendering[label="Render"]
+}

@@ -1,0 +1,9 @@
+dist
+node_modules
+public
+assets
+pnpm-lock.yaml
+*.svg
+storybook-static
+shared-dist
+**/*.js
