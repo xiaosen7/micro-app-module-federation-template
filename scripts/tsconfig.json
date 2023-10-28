@@ -1,3 +1,4 @@
 {
-  "extends": "@shared/tsconfig"
+  "extends": "@shared/tsconfig",
+  "include": ["./**/*", "../shared/tsconfig/typings"]
 }

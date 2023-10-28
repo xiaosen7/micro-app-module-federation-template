@@ -1,3 +1,10 @@
 {
-  "extends": "@shared/tsconfig"
+  "extends": "@shared/tsconfig",
+  "compilerOptions": {
+    "paths": {
+      "modules/*": ["../../micro/modules/src/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "../../shared/tsconfig/typings"]
 }

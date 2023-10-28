@@ -1,16 +1,20 @@
 {
-  "name": "micro-app-module-federation-template",
+  "name": "root",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "dev": "pnpm -F=@micro/modules dev & pnpm -F=@apps/main dev",
+    "mi": "scripts mi",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@shared/tsconfig": "workspace:^",
+    "@types/react": "^18.2.31",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "eslint": "^8.52.0",
@@ -24,8 +28,11 @@
     "lint-staged": "^15.0.2",
     "nx": "17.0.1",
     "prettier": "^3.0.3",
+    "root": "link:",
+    "scripts": "workspace:^",
     "simple-git-hooks": "^2.9.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
