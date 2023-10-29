@@ -1,16 +1,20 @@
+import path from 'path';
+
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import merge from 'webpack-merge';
 
 import type { Configuration } from 'webpack';
 
 export abstract class WebpackConfiguration {
+  constructor(private projectDir: string) {}
   get(): Configuration {
     return {
       entry: {
         main: './src/index.tsx'
       },
       cache: {
-        type: 'filesystem'
+        type: 'filesystem',
+        cacheDirectory: path.resolve(this.projectDir, 'node_modules', '.cache', 'webpack')
       },
       module: {
         rules: [
@@ -35,8 +39,13 @@ export abstract class WebpackConfiguration {
       },
       resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        plugins: [new TsconfigPathsPlugin()]
-      }
+        plugins: [
+          new TsconfigPathsPlugin({
+            configFile: path.resolve(this.projectDir, 'tsconfig.json')
+          })
+        ]
+      },
+      context: this.projectDir
     };
   }
 

@@ -65,6 +65,13 @@ function MicroAppDevMode(props: IMicroAppProps) {
     [lifecycle]
   );
 
+  useEffect(() => {
+    const port = MicroUtils.getAppPort(appName);
+    if (!port) {
+      lifecycle.dispatch(MicroAppRenderingLifecycleMachine.Actions.FetchError);
+    }
+  }, []);
+
   let node: ReactElement;
   switch (state) {
     case EState.Start:

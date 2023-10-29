@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "simple-git-hooks",
-    "dev": "pnpm -F=@micro/modules dev & pnpm -F=@apps/main dev",
+    "dev": "scripts dev",
     "mi": "scripts mi",
     "test": "vitest"
   },

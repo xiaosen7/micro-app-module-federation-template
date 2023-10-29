@@ -6,11 +6,7 @@ import { Project } from './project';
 export interface IProviderProjectOptions {}
 
 export class ProviderProject extends Project {
-  build(): void {
-    this.runner.build(new ProviderBuildConfiguration(), this);
-  }
-
-  serve(): void {
-    this.runner.serve(new ProviderDevConfiguration(), this);
+  constructor(projectDir: string) {
+    super(projectDir, new ProviderDevConfiguration(projectDir), new ProviderBuildConfiguration(projectDir));
   }
 }

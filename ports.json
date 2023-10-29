@@ -1,5 +1,1 @@
-{
-  "@apps/main": 8000,
-  "@micro/login": 8001,
-  "@micro/modules": 8002
-}
+{ "@micro/modules": 8080, "@apps/main": 8081, "@micro/login": 8082 }

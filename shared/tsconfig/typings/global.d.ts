@@ -1,5 +1,6 @@
 // #region micro
-type IAppName = keyof typeof import('root/ports.json');
+// type IAppName = keyof typeof import('root/ports.json');
+type IAppName = string;
 type IExtractMicroAppName<T extends string, B = T> = B extends `@micro/${string}` ? (B extends '@micro/modules' ? never : B) : never;
 type IMicroAppName = IExtractMicroAppName<IAppName>;
 // #endregion micro

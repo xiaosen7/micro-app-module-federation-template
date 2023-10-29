@@ -1,5 +1,3 @@
-import path from 'path';
-
 import autoprefixer from 'autoprefixer';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
@@ -24,7 +22,7 @@ export namespace WebpackLoaderFactory {
         options: {
           postcssOptions: {
             plugins: [
-              ['tailwindcss', { config: path.resolve(pathUtils.workspaceRoot, 'scripts', 'tailwind.config.js') }],
+              ['tailwindcss', { config: pathUtils.tailwindcss }],
               ['postcss-preset-env', autoprefixer()]
             ]
           }

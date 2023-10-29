@@ -30,6 +30,7 @@
     "npmlog": "^7.0.1",
     "postcss-loader": "^7.3.3",
     "postcss-preset-env": "^9.2.0",
+    "rxjs": "^7.8.1",
     "style-loader": "^3.3.3",
     "swc-loader": "^0.2.3",
     "swc-minify-webpack-plugin": "^2.1.1",

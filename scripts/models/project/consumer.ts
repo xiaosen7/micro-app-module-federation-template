@@ -6,11 +6,7 @@ import { Project } from './project';
 export interface IProviderProjectOptions {}
 
 export class ConsumerProject extends Project {
-  build(): void {
-    this.runner.build(new ConsumerBuildConfiguration(), this);
-  }
-
-  serve(): void {
-    this.runner.serve(new ConsumerDevConfiguration(), this);
+  constructor(projectDir: string) {
+    super(projectDir, new ConsumerDevConfiguration(projectDir), new ConsumerBuildConfiguration(projectDir));
   }
 }

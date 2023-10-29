@@ -1,8 +1,10 @@
 /* eslint-disable prettier/prettier */
-import { resolve } from 'path';
+import path from 'path';
 
 import * as fg from 'fast-glob';
 import { NormalModuleReplacementPlugin } from 'webpack';
+
+import { pathUtils } from './paths';
 
 export namespace moduleFederationUtils {
   export function resolveCodeFiles(projectDir: string) {
@@ -43,7 +45,7 @@ export namespace moduleFederationUtils {
   export function createProviderReplacerPlugin(module: string) {
     return new NormalModuleReplacementPlugin(new RegExp(`^${module}$`), (data) => {
       if (!data.contextInfo.issuer.includes(`src/${module}`)) {
-        data.request = resolve(`src/${module}.ts`);
+        data.request = path.resolve(pathUtils.getMicroModulesDir(), `src/${module}.ts`);
       }
     });
   }
