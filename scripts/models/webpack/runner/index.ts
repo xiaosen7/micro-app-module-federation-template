@@ -53,7 +53,7 @@ export class WebpackRunner {
     const compiler = webpack(
       this.buildConfiguration.merge({
         output: {
-          publicPath: `/micro/${this.packageJson.name.replace('@micro/', '')}/`
+          publicPath: `/${this.packageJson.name.replace('@', '')}/`
         },
         context: this.projectDir
       })

@@ -1,5 +1,6 @@
 import path from 'path';
 
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import merge from 'webpack-merge';
 
@@ -11,6 +12,9 @@ export abstract class WebpackConfiguration {
     return {
       entry: {
         main: './src/index.tsx'
+      },
+      output: {
+        clean: true
       },
       cache: {
         type: 'filesystem',
@@ -37,6 +41,7 @@ export abstract class WebpackConfiguration {
           }
         ]
       },
+      plugins: [new HtmlWebpackPlugin()],
       resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         plugins: [

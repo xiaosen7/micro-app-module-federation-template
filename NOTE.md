@@ -278,6 +278,52 @@ output: {
 
 我们首先启动 modules，然后启动微应用 login，最后是主应用 main。
 
+## 构建
+
+以下是打包后的目录结构，实现这个打包结构我们需要合并各个应用的 dist 文件夹。
+
+![dist](./docs/dist.png)
+
+首先修改 Webpack 的 output.publicPath 的配置：
+
+```ts
+output: {
+  publicPath: `/${this.packageJson.name.replace('@', '')}/`;
+}
+```
+
+这样如果访问 apps/main 这个应用，访问地址应是：`http://xxx/apps/main/`
+
+如果访问 micro/login 这个应用，访问地址应是：`http://xxx/micro/login/`
+
+下面来实现汇聚各个应用的输出目录：
+
+```ts
+import cpy from 'cpy';
+import fsx from 'fs-extra';
+import fs from 'fs/promises';
+
+await fsx.emptyDir(pathUtils.resolveWorkspaceRoot('dist'));
+
+// 拷贝所有主应用的 dist 文件夹
+const apps = (await fs.readdir('./apps')).filter((x) => !(x.startsWith('.') || x.startsWith('_')));
+await Promise.all(
+  apps.map(async (x) => {
+    await cpy(path.join(pathUtils.workspaceRoot, `./apps/${x}/dist/**`), pathUtils.resolveWorkspaceRoot(`./dist/apps/${x}`));
+  })
+);
+
+// 拷贝所有微应用 dist 文件夹
+const microApps = (await fs.readdir('./micro')).filter((x) => !(x.startsWith('.') || x.startsWith('_')));
+await Promise.all(
+  microApps.map(async (x) => {
+    await cpy(path.join(pathUtils.workspaceRoot, `./micro/${x}/dist/**`), pathUtils.resolveWorkspaceRoot(`./dist/micro/${x}`));
+  })
+);
+
+log.info(`create ${pathUtils.resolveWorkspaceRoot('dist')}`);
+```
+
 ## 优化
 
 之前的过程对开发体验不友好，各种配置一大堆，维护困难，下面我们来做一些工程优化

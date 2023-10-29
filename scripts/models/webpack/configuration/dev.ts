@@ -1,4 +1,3 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import merge from 'webpack-merge';
 
 import { WebpackRawConfigurationFactory } from '../../factories/webpack/raw-configuration';
@@ -15,7 +14,9 @@ export class WebpackDevConfiguration extends WebpackConfiguration {
       {
         mode: 'development',
         devtool: 'cheap-module-source-map',
-        plugins: [new HtmlWebpackPlugin()]
+        output: {
+          filename: '[name].js'
+        }
       },
       WebpackRawConfigurationFactory.css(extract),
       WebpackRawConfigurationFactory.less(extract)

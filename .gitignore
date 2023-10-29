@@ -25,3 +25,8 @@ dist-ssr
 *.sw?
 storybook-static
 .nx
+
+# 项目文件
+
+ports.json
+micro/modules/src/app-manifests.ts

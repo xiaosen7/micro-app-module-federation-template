@@ -14,6 +14,9 @@ export class WebpackBuildConfiguration extends WebpackConfiguration {
       super.get(),
       {
         mode: 'production',
+        output: {
+          filename: '[name].[contenthash].js'
+        },
         optimization: {
           minimizer: [new SwcMinifyWebpackPlugin()]
         }

@@ -1,5 +1,12 @@
 {
-  "targetDefaults": {},
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx-cloud",
+      "options": {
+        "cacheableOperations": ["build"]
+      }
+    }
+  },
   "affected": {
     "defaultBase": "main"
   },

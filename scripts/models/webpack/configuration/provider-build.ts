@@ -10,7 +10,7 @@ export class ProviderBuildConfiguration extends WebpackBuildConfiguration {
     return merge(super.get(), {
       plugins: [
         new ModuleFederationProviderPlugin(),
-        ...['react/jsx-dev-runtime', 'react/jsx-runtime'].map(moduleFederationUtils.createConsumerReplacerPlugin)
+        ...['react/jsx-dev-runtime', 'react/jsx-runtime'].map(moduleFederationUtils.createProviderReplacerPlugin)
       ]
     });
   }
