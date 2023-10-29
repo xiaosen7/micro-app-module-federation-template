@@ -1,9 +1,21 @@
 # micro-app-module-federation-template
 
-启动开发
+安装
+
+```bash
+pnpm i
+```
+
+开发
 
 ```bash
 pnpm dev
+```
+
+构建
+
+```bash
+pnpm build
 ```
 
 在 modules 里安装模块
